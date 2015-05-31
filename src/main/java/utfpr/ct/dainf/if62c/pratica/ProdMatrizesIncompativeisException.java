@@ -12,8 +12,15 @@ package utfpr.ct.dainf.if62c.pratica;
 public class ProdMatrizesIncompativeisException extends MatrizesIncompativeisException{
     
         public ProdMatrizesIncompativeisException(Matriz m1,Matriz m2){
+            
+            
     
         super(m1,m2);
+        
+     String.format(
+            "Matrizes de %dx%d e %dx%d não podem ser multiplicadas",
+            m1.getMatriz().length, m1.getMatriz()[0].length,
+            m2.getMatriz().length, m2.getMatriz()[0].length);
 }
 
 }

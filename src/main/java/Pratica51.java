@@ -1,6 +1,8 @@
-
 import utfpr.ct.dainf.if62c.pratica.Matriz;
-import utfpr.ct.dainf.if62c.pratica.*;
+import utfpr.ct.dainf.if62c.pratica.MatrizInvalidaException;
+
+import utfpr.ct.dainf.if62c.pratica.ProdMatrizesIncompativeisException;
+import utfpr.ct.dainf.if62c.pratica.SomaMatrizesIncompativeisException;
 
 /**
  * IF62C Fundamentos de Programação 2
@@ -53,6 +55,7 @@ public class Pratica51 {
         Matriz C;
         C = B.soma(A);
         System.out.println("Matriz original + B: " + C);
+   
         
         C = A.prod(B);
         System.out.println("A x B: " + C);

@@ -7,7 +7,7 @@ package utfpr.ct.dainf.if62c.pratica;
 public class Matriz {
     
     // a matriz representada por esta classe
-    public final double[][] mat;
+    private final double[][] mat;
  
     
     /**
@@ -34,6 +34,7 @@ public class Matriz {
     /**
      * Retorna a matriz transposta.
      * @return A matriz transposta.
+     * @throws utfpr.ct.dainf.if62c.pratica.MatrizInvalidaException
      */
     public Matriz getTransposta() throws MatrizInvalidaException {
         Matriz t = new Matriz(mat[0].length, mat.length);
@@ -49,6 +50,8 @@ public class Matriz {
      * Retorna a soma desta matriz com a matriz recebida como argumento.
      * @param m A matriz a ser somada
      * @return A soma das matrizes
+     * @throws utfpr.ct.dainf.if62c.pratica.MatrizInvalidaException
+     * @throws utfpr.ct.dainf.if62c.pratica.SomaMatrizesIncompativeisException
      */
     public Matriz soma(Matriz m) throws MatrizInvalidaException, SomaMatrizesIncompativeisException {
         if(this.mat.length != m.mat.length || this.mat[0].length != m.mat[0].length){ 
@@ -68,18 +71,19 @@ public class Matriz {
      * @param m A matriz a ser multiplicada
      * @return O produto das matrizes
      * @throws utfpr.ct.dainf.if62c.pratica.ProdMatrizesIncompativeisException
+     * @throws utfpr.ct.dainf.if62c.pratica.MatrizInvalidaException
      */
     public Matriz prod(Matriz m) throws ProdMatrizesIncompativeisException, MatrizInvalidaException {
-        if (this.mat[0].length != m.mat.length) {
+        if (this.mat[0].length != m.getMatriz().length) {
         throw new ProdMatrizesIncompativeisException(this, m);
     }
         
         
-        Matriz mp = new Matriz(mat.length, m.mat[0].length);
+        Matriz mp = new Matriz(mat.length, m.getMatriz()[0].length);
         for (int i = 0; i < this.mat.length; i++) {
-            for (int j = 0; j < m.mat[0].length; j++) {
-                for (int k = 0; k < m.mat.length; k++) {
-                    mp.mat[i][j] += mat[i][k] * m.mat[k][j];
+            for (int j = 0; j < m.getMatriz()[0].length; j++) {
+                for (int k = 0; k < m.getMatriz().length; k++) {
+                    mp.mat[i][j] += mat[i][k] * m.getMatriz()[k][j];
                 }
             }
         }
