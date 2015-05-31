@@ -13,54 +13,54 @@ public class Pratica51 {
 
     public static void main(String[] args) {
       
-         try{
-             
-        Matriz orig0 = new Matriz(0,3);
-        Matriz orig = new Matriz(3,2);
-         
-        double[][] m = orig.getMatriz();
-        m[0][0] = 0.0;
-        m[0][1] = 0.1;
-        m[1][0] = 1.0;
-        m[1][1] = 1.1;
-        m[2][0] = 2.0;
-        m[2][1] = 2.1;
+        try {
         
-        System.out.println("Matriz original: " + orig);
-    
-        
-        Matriz A = new Matriz(3, 1);
-        double a[][] = A.getMatriz();
-        a[0][0] = 0.0;
-      
-        a[1][0] = 1.0;
-  
-        a[2][0] = 2.0;
-     
-   
-        System.out.println("Matriz A: " + A);
+            Matriz mat1 = new Matriz(3, 3);
+        Matriz mat2 = new Matriz(3, 3);
+        Matriz mat3 = new Matriz(1, 3);
+        Matriz mat5 = new Matriz(0, 3);
 
-        Matriz B = new Matriz(2, 4);
-        double[][] b = B.getMatriz();
-        b[0][0] = 0.0;
-        b[0][1] = 0.1;
-        b[0][2] = 0.2;
-        b[0][3] = 0.3;
-        b[1][0] = 1.0;
-        b[1][1] = 1.1;
-        b[1][2] = 1.2;
-        b[1][3] = 1.3;       
-        System.out.println("Matriz B: " + B);
+     
+        double[][] m1 = mat1.getMatriz();
+        double[][] m2 = mat2.getMatriz();
+        double[][] mS = mat3.getMatriz();
         
-        Matriz C;
-        C = B.soma(A);
-        System.out.println("Matriz original + B: " + C);
-   
+        m1[0][0] = 1.0;
+        m1[0][1] = 1.0;
+        m1[0][2] = 1.0;
+        m1[1][0] = 1.0;
+        m1[1][1] = 1.0;
+        m1[1][2] = 1.0;
+        m1[2][0] = 1.0;
+        m1[2][1] = 1.0;
+        m1[2][2] = 1.0;
         
-        C = A.prod(B);
-        System.out.println("A x B: " + C);
-    } catch(MatrizInvalidaException | ProdMatrizesIncompativeisException | SomaMatrizesIncompativeisException e){
-        System.out.println(e);
-    } 
+        m2[0][0] = 2.0;
+        m2[0][1] = 2.0;
+        m2[0][2] = 2.0;
+        m2[1][0] = 2.0;
+        m2[1][1] = 2.0;
+        m2[1][2] = 2.0;
+        m2[2][0] = 2.0;
+        m2[2][1] = 2.0;
+        m2[2][2] = 2.0;
+        
+        mS[0][0] = 2.0;
+        mS[0][1] = 2.0;
+        mS[0][2] = 2.0;
+        
+    
+
+        Matriz soma = mat1.soma(mat2);
+        Matriz errada = mat1.soma(mat3);
+
+        Matriz produto = mat1.prod(mat2);
+        Matriz errado = mat3.prod(mat1);
+
+        
+        } catch (MatrizInvalidaException | ProdMatrizesIncompativeisException | SomaMatrizesIncompativeisException e) 
+        {
+            System.out.println(e.getLocalizedMessage());
+        }
     }
 }
